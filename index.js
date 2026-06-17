@@ -10,7 +10,7 @@
  * getFirst([true,false,true]); // true
  */
 export function getFirst(array) {
-  // TODO
+  return array[0];
 }
 
 /**
@@ -25,7 +25,7 @@ export function getFirst(array) {
  * getLast([true,false,true]); // true
  */
 export function getLast(array) {
-  // TODO
+  return array[array.length - 1];
 }
 
 /**
@@ -42,9 +42,14 @@ export function getLast(array) {
  * getFirstLast([42]); // [42]
  */
 export function getFirstLast(array) {
-  // TODO
+  if (array.length === 0) {
+    return [];
+  }
+  if (array.length === 1) {
+    return [array[0]];
+  }
+  return [array[0], array[array.length - 1]];
 }
-
 /**
  * @param {string} str1 - the first string
  * @param {string} str2 - the second string
@@ -59,9 +64,15 @@ export function getFirstLast(array) {
  * sharesFirstLetter("cat", "dog"); // false
  */
 export function sharesFirstLetter(str1, str2) {
-  // TODO
+  if (str1 === "" && str2 === "") {
+    return false;
+  }
+  if (str1[0] === str2[0]) {
+    return true;
+  } else {
+    return false;
+  }
 }
-
 /**
  * @param {number[]} numbers - an array of numbers
  * @returns {number[]} a new array with each number multiplied by 5
@@ -74,9 +85,13 @@ export function sharesFirstLetter(str1, str2) {
  * quintuple([]); // []
  */
 export function quintuple(numbers) {
-  // TODO
-}
+  const result = [];
+  for (let i = 0; i < numbers.length; i++) {
+    result[i] = numbers[i] * 5;
+  }
 
+  return result;
+}
 /**
  * There is a general rule for making nouns plural in English:
  * Add "s" to the end of the word, unless the word already ends with "s",
@@ -95,7 +110,19 @@ export function quintuple(numbers) {
  * pluralize([]); // []
  */
 export function pluralize(words) {
-  // TODO
+  const result = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const currentWord = words[i];
+
+    if (currentWord.endsWith("s")) {
+      result.push(currentWord + "es");
+    } else {
+      result.push(currentWord + "s");
+    }
+  }
+
+  return result;
 }
 
 /**
@@ -112,7 +139,14 @@ export function pluralize(words) {
  * countAttendance([]); // 0
  */
 export function countAttendance(attendance) {
-  // TODO
+  let studentsPresent = 0;
+  for (let i = 0; i < attendance.length; i++) {
+    if (attendance[i] === true) {
+      studentsPresent++;
+    }
+  }
+
+  return studentsPresent;
 }
 
 /**
@@ -128,7 +162,19 @@ export function countAttendance(attendance) {
  * getLongestWord(["a", "ab", "abc"]); // "abc"
  */
 export function getLongestWord(sentence) {
-  // TODO
+  if (sentence.length === 0) {
+    return null;
+  }
+
+  let longest = sentence[0];
+
+  for (let i = 1; i < sentence.length; i++) {
+    if (sentence[i].length > longest.length) {
+      longest = sentence[i];
+    }
+  }
+
+  return longest;
 }
 
 /**
